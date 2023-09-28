@@ -1,0 +1,80 @@
+\begin{fullwidth}
+    \section{dYdX Chain: Genesis} \label{app:genesis}
+
+    \begin{adjustwidth}{2cm}{2cm}
+        \justify
+        A key component of any Cosmos blockchain is the Genesis state. The Genesis state is the initial configuration of the blockchain's parameters, initial accounts, token allocations, etc.. In this appendix, we query the \texttt{genesis.json} file for dYdX v4's third testnet, and paste relevant chunks of that file for reference, such as initial markets and rewards parameters.
+    \end{adjustwidth}
+
+    \textcolor{gray}{\rule{\linewidth}{0.1mm}}
+\end{fullwidth}
+
+    \subsection{Querying \texttt{genesis.json}}
+
+        The \texttt{genesis.json} file contains a chain's initial state. For dYdX Chain, this entails the chain's initial markets, rewards parameters, staking parameters, treasury accounts, and many other things. 
+
+        To query the \texttt{genesis.json} file, run the following command in the terminal of your choice:
+
+        \begin{lstlisting}[language=bash]
+            curl https://dydx-testnet-archive.allthatnode.com:26657 --header "Content-Type: application/json" --request GET --data '{"jsonrpc":"2.0", "id":1, "method":"genesis"}' > genesis.json
+        \end{lstlisting}
+
+        This will query the Genesis state for dYdX Chain's testnet and save it to a local \texttt{genesis.json} file. To query for mainnet, choose a Tendermint RPC provider (such as AllThatNode, a dYdX Chain validator), and find the appropriate \bhref{https://www.allthatnode.com/dydx.dsrv}{endpoint}. 
+
+    \subsection{Examples}
+
+        Here are some examples relevant to items discussed throughout this report.
+
+        \subsubsection{Perpetual Markets} \label{appsubsec:perps}
+
+            The chain's perpetuals markets available at Genesis include:
+
+            \begin{lstlisting}[language=bash]
+                ['BTC-USD',
+                 'ETH-USD',
+                 'LINK-USD',
+                 'MATIC-USD',
+                 'CRV-USD',
+                 'SOL-USD',
+                 'ADA-USD',
+                 'AVAX-USD',
+                 'FIL-USD',
+                 'LTC-USD',
+                 'DOGE-USD',
+                 'ATOM-USD',
+                 'DOT-USD',
+                 'UNI-USD',
+                 'BCH-USD',
+                 'TRX-USD',
+                 'NEAR-USD',
+                 'MKR-USD',
+                 'XLM-USD',
+                 'ETC-USD',
+                 'COMP-USD',
+                 'WLD-USD',
+                 'APE-USD',
+                 'APT-USD',
+                 'ARB-USD',
+                 'BLUR-USD',
+                 'LDO-USD',
+                 'OP-USD',
+                 'PEPE-USD',
+                 'SEI-USD',
+                 'SHIB-USD',
+                 'SUI-USD',
+                 'XRP-USD']
+            \end{lstlisting}
+
+        \subsection{Rewards parameters}
+
+            The testnet dYdX Chain defines the rewards token as the testnet token \texttt{dv4tnt}, we can see the rewards parameters in the Genesis file:
+
+            \begin{lstlisting}[language=python]
+                 'rewards': {'params': {'denom': 'dv4tnt',
+                   'denom_exponent': -6,
+                   'fee_multiplier_ppm': 990000,
+                   'market_id': 11,
+                   'treasury_account': 'rewards_treasury'}},
+            \end{lstlisting}
+
+            Notice that the \texttt{fee\_multiplier\_ppm} is the $C$ parameter discussed in Section \ref{sec:incentives}, and is equal to $0.99$, or $990000$ parts-per-million.

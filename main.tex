@@ -1,0 +1,304 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sullivan Business Report
+% LaTeX Template
+% Version 1.0 (May 5, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	CLASS, PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+        a4paper, % Paper size, use either a4paper or letterpaper
+	8pt, % Default font size, the template is designed to look good at 12pt so it's best not to change this
+	%unnumberedsections, % Uncomment for no section numbering
+]{CSSullivanBusinessReport}
+
+\addbibresource{bibliography.bib} % BibLaTeX bibliography file
+
+\usepackage{import}
+\usepackage{xcolor}
+\usepackage{pagecolor}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{csquotes}
+\usepackage[framemethod=TikZ]{mdframed}
+
+\definecolor{boxcolor}{rgb}{0.9, 0.9, 0.9}
+
+\newmdenv[
+  skipabove=10pt,
+  skipbelow=10pt,
+  rightmargin=0pt,
+  leftmargin=0pt,
+  innerleftmargin=7pt,
+  innerrightmargin=7pt,
+  innertopmargin=7pt,
+  innerbottommargin=7pt,
+  linewidth=0pt,
+  roundcorner=2pt,
+  backgroundcolor=boxcolor,
+]{mybox}
+
+\newcommand{\callout}[2]{
+  \begin{mybox}
+    \parbox{\linewidth}{
+      \begin{center}\textbf{#1}\end{center}
+      #2
+    }
+  \end{mybox}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	REPORT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\reporttitle{dYdX v4: with Great Decentralization Comes Great Responsibility} % The report title to appear on the title page and page headers, do not create manual new lines here as this will carry over to page headers
+
+\reportsubtitle{Overviewing the dYdX Ecosystem's Migration from Ethereum to the Cosmos,\\ and the Challenges that lie Ahead.} % Report subtitle, include new lines if needed
+
+\reportauthors{prepared by \fontsize{20pt}{36pt}\selectfont Xenophon Labs}
+
+\reportdate{August 2023} % Report date, include new lines for additional information if needed
+
+\rightheadercontent{\includegraphics[width=1.5cm]{Images/xenophon.png}} % The content in the right header, you may want to add your own company logo or use your company/department name or leave this command empty for no right header content
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\definecolor{bg}{RGB}{10,10,60}
+\pagecolor{bg}
+\color{white}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty} % Suppress headers and footers on this page
+
+\begin{fullwidth} % Use the whole page width
+	\vspace*{-0.075\textheight} % Pull logo into the top margin
+
+	\hfill\includegraphics[width=2cm]{Images/xenophon_inv.png} % Company logo
+ 
+	\vspace{0.1\textheight} % Vertical whitespace
+
+	\parbox{0.9\fulltextwidth}{\fontsize{40pt}{42pt}\selectfont\raggedright\reporttitle\par} % Report title, intentionally at less than full width for nice wrapping. Adjust the width of the \parbox and the font size as needed for your title to look good.
+	
+	\vspace{0.03\textheight} % Vertical whitespace
+	
+	{\LARGE{\reportsubtitle}\par} % Subtitle
+	
+	\vspace*{4.5in}% Vertical whitespace
+	
+	{\Large\reportauthors\par} % Report authors, group or department
+	
+	\vfill\vfill\vfill % Vertical whitespace
+
+ 
+	{\large\reportdate\par} % Report date
+\end{fullwidth}
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	DISCLAIMER/COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty} % Suppress headers and footers on this page
+
+\begin{twothirdswidth}
+    
+    \small
+
+    \subsection*{Disclaimer}
+
+	The authors do not own \texttt{DYDX} token, nor are they affiliated with dYdX Trading Inc. or any of its affiliates. This research was funded by a grant from the dYdX Grants Program. Any opinions and results stated here are those of the authors, not of dYdX or its affiliates. Henceforth any mention of ``dYdX'' is in reference to the dYdX Protocol, unless explicitly stated otherwise. Nothing in this paper should be construed as financial advice or trading advice.
+	
+	% \subsection*{Copyright}
+	
+	% \textcopyright~[2023] [Xenophon Labs] 
+	
+	% Copyright notice text\ldots In hac habitasse platea dictumst. Curabitur mattis elit sit amet justo luctus vestibulum. In hac habitasse platea dictumst. Pellentesque lobortis justo enim, a condimentum massa tempor eu. Ut quis nulla a quam pretium eleifend nec eu nisl. Nam cursus porttitor eros, sed luctus ligula convallis quis.
+	
+	\subsection*{Contact}
+	
+        Prepared by Xenophon Labs.
+
+        All Inquiries: \ulhref{mailto:contact@xenophonlabs.com}{contact@xenophonlabs.com}
+        
+        Website: \ulhref{https://www.xenophonlabs.com}{xenophonlabs.com}
+	
+	\vfill % Push the following down to the bottom of the page
+	
+	\subsubsection*{Changelog}
+	
+	\scriptsize % Reduce font size further
+	
+	\begin{tabular}{@{} L{0.05\linewidth} L{0.15\linewidth} L{0.6\linewidth} @{}} % Column widths specified here, change as needed for your content
+		\toprule
+		v1.0 & 2023-10 & Published by Xenophon Labs.\\
+		\bottomrule
+	\end{tabular}
+\end{twothirdswidth}
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+\pagecolor{white}
+\color{black}
+
+\thispagestyle{empty} % Suppress headers and footers on this page
+
+\begin{twothirdswidth} % Content in this environment to be at two-thirds of the whole page width
+	\tableofcontents % Output the table of contents, automatically generated from the section commands used in the document
+\end{twothirdswidth}
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	SECTIONS
+%----------------------------------------------------------------------------------------
+\justify
+
+\import{sections/}{summary}
+
+% Part 1: A Recap
+\newpage
+\pagecolor{bg}
+\color{white}
+\begin{fullwidth} % Use the whole page width
+	\vspace*{-0.075\textheight} % Pull logo into the top margin
+	\vspace{0.15\textheight} % Vertical whitespace
+	\parbox{0.9\fulltextwidth}{\fontsize{50pt}{52pt}\selectfont\raggedright\textbf{Part 1}\par} % Report title, intentionally at less than full width for nice wrapping. Adjust the width of the \parbox and the font size as needed for your title to look good.
+ 
+        \vspace{0.03\textheight} % Vertical whitespace
+        
+        {\Huge{Recapping dYdX's Migration from Ethereum to Cosmos}\par} % Subtitle
+\end{fullwidth}
+\newpage
+\pagecolor{white}
+\color{black}
+
+\addtocontents{toc}{\begin{center}
+    \large \textbf{Part 1: Recapping dYdX's Migration from Ethereum to Cosmos}
+\end{center}}
+
+\import{sections/}{introduction}
+\clearpage
+\import{sections/}{migration}
+
+% Part 2: Looking Forward
+\clearpage
+\pagecolor{bg}
+\color{white}
+\begin{fullwidth} % Use the whole page width
+	\vspace*{-0.075\textheight} % Pull logo into the top margin
+	\vspace{0.15\textheight} % Vertical whitespace
+ 	\parbox{0.9\fulltextwidth}{\fontsize{50pt}{52pt}\selectfont\raggedright\textbf{Part 2}\par} % Report title, intentionally at less than full width for nice wrapping. Adjust the width of the \parbox and the font size as needed for your title to look good.
+ 
+        \vspace{0.03\textheight} % Vertical whitespace
+        
+        {\Huge{The Challenges that Lie Ahead}\par} % Subtitle
+\end{fullwidth}
+\clearpage
+\pagecolor{white}
+\color{black}
+
+\addtocontents{toc}{\begin{center} \large
+    \textbf{Part 2: The Challenges that Lie Ahead}
+\end{center}}
+
+\import{sections/}{validators}
+\clearpage
+\import{sections/}{tradingrewards}
+\clearpage
+\import{sections/}{markets}
+\clearpage
+\import{sections/}{frontend}
+\clearpage
+\import{sections/}{governance}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+%	APPENDICES
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\pagecolor{bg}
+\color{white}
+
+\begin{fullwidth} % Use the whole page width
+
+	\vspace*{-0.075\textheight} % Pull logo into the top margin
+	
+	\vspace{0.15\textheight} % Vertical whitespace
+
+	\parbox{0.9\fulltextwidth}{\fontsize{50pt}{52pt}\selectfont\raggedright\textbf{Appendix}\par} % Report title, intentionally at less than full width for nice wrapping. Adjust the width of the \parbox and the font size as needed for your title to look good.
+
+\end{fullwidth}
+
+\addtocontents{toc}{\begin{center}
+    \large \textbf{Appendix}
+\end{center}}
+
+\newpage
+
+\pagecolor{white}
+\color{black}
+
+\begin{appendices}
+
+    % Import Appendices
+    \import{appendices/}{authors}
+    \newpage
+    \import{appendices/}{genesis}
+    \newpage
+    \import{appendices/}{wash}
+    % \newpage
+    % \import{appendices/}{feip}
+\end{appendices}
+
+%----------------------------------------------------------------------------------------
+%   END
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\pagecolor{bg}
+\color{white}
+
+\thispagestyle{empty} % Suppress headers and footers on this page
+
+\begin{fullwidth} % Use the whole page width
+	\vspace*{-0.075\textheight} % Pull logo into the top margin
+	\vspace{0.9\textheight} % Vertical whitespace
+        {\LARGE Xenophon Labs}\\
+        \vspace{0.2cm}
+        \small
+	\textcopyright~[August 2023] [Xenophon Labs] \\
+        \vspace{1cm}
+        Website: \ulhref{https://xenophonlabs.com/}{XenophonLabs.com}\\
+        \vspace{0.2cm}
+        Twitter: \href{https://twitter.com/XenophonLabs}{@XenophonLabs}\\
+        \vspace{0.2cm}
+        LinkedIn: \href{https://www.linkedin.com/company/xenophon-labs/about/}{@XenophonLabs}\\
+\end{fullwidth}
+
+\end{document}
