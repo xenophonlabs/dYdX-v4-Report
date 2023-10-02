@@ -3,7 +3,7 @@
 
     \begin{adjustwidth}{2cm}{2cm}
         \justify
-        dYdX v4 empowers the community to control market listings and market parameters through on-chain governance proposals. The timely listing of new markets is a crucial component of growth in the fast-paced industry of decentralized finance, and requires sophisticated risk-management to ensure market parameters reflect the risks of underlying tokens. Furthermore, dYdX v4 will eventually launch a permissionless listings program, which will enable any user to list a new market by specifying its oracle, market parameters, and perhaps providing some initial liquidity. In this section we discuss initial market listings for dYdX v4, the community's responsibility in listing new markets and managing market parameters, and a few thoughts on permissionless listings design. The permissionless listings ideas presented here are the product of discussions with several community members at dYdX, and other DeFi protocols including Osmosis.
+        dYdX v4 empowers the community to control market listings and market parameters through on-chain governance proposals. The timely listing of new markets is a crucial component of growth in the fast-paced industry of decentralized finance, and requires sophisticated risk-management to ensure market parameters reflect the risks of underlying tokens. Furthermore, dYdX v4 will eventually launch a permissionless listings program, which will enable any user to list a new market by specifying its oracle, market parameters, and perhaps providing some initial liquidity. In this section we discuss initial market listings for dYdX v4, the community's responsibility in listing new markets and managing market parameters, and a few thoughts on permissionless listings design. The permissionless listings ideas presented here are the product of discussions with several community members at dYdX, and other DeFi protocols.
     \end{adjustwidth}
     
     \textcolor{gray}{\rule{\linewidth}{0.1mm}}
@@ -114,7 +114,9 @@
 
             \textbf{Denial-of-Service Attacks and Spam}
 
-            A less pernicious attack is spamming the network with permissionless markets. This might be done maliciously to damage the user-experience for permissionless listings and increase the costs of operating the chain. It might also be a consequence of a low barrier to list markets. For this reason, Osmosis and other permissionless protocols implement listing fees to deter users from spamming new markets.
+            A less pernicious attack is spamming the network with permissionless markets. This might be done maliciously to damage the user-experience for permissionless listings and increase the costs of operating the chain. At the time of writing, gas fees are \$0, users can place long-term orders that are incorporated into blockchain state. These stateful orders come with rate limits on a per-market-per-account basis; for example, a user with \$20 of collateral can place no more than one order in each market at a time \cite{otherApiLimits}. That is, the cost of capital for spamming the network with one order on every market on every block is \$20. If there are 50 markets, then it would only require \$20 to spam the network with 50 orders every block.
+            
+            Chain spam risk may arise from a low barrier to list markets. For this reason, Osmosis and other permissionless protocols implement listing fees to deter users from spamming new markets.
 
         \subsubsection{Liquidity Fragmentation}
 

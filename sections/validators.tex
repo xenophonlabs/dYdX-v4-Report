@@ -86,7 +86,7 @@
 
             dYdX v4 will be entirely replacing the LP rewards program, introduced by the dYdX Foundation in dYdX v3, with a market maker rebate program. As noted in a number of governance proposals, market maker rebates are likely a better incentive for top-of-book liquidity, and provide a more sustainable incentive for liquidity provision. That is, they don't require further inflation to the DYDX token.
             
-            We invited Colin Chan (\bhref{https://dydx.forum/u/0xcchan/summary}{@0xCchan}), a dYdX community member, to offer further insights on the differences between LP rewards and rebates:
+            We invited \bhref{https://dydx.forum/u/0xcchan/summary}{@0xCchan}, a dYdX community member, to offer further insights on the differences between LP rewards and rebates:
 
             \begin{displayquote}
                 The LP Incentive Programme was implemented to encourage MMs to continuously provide two-sided liquidity to markets through rewards. A previous review on the state of the orderbook was done in May 2023, alongside suggested schemes and mechanisms proposed. With the decentralisation of the orderbook, Xenophon Labs has highlighted that the ‘true state’ of it will not be clear and hence different metrics such as depth, spread and uptime will be more challenging to monitor. Therefore, we would need to rely less on orderbook-driven data and shift to clearly defined metrics.
@@ -227,10 +227,9 @@
             %     \label{fig:chorus_one_mev}
             % \end{figure*}
 
-        \subsubsection{Preventative Measures \& TEEs}
+        \subsubsection{Preventative Measures}
 
-            MEV TEE SGX research by Xenophon Labs.
+            There are primarily two forms of MEV that may be present in dYdX V4, which we term ``plaintext-conditional''  and ``plaintext-unconditional'' MEV. An example of plaintext-condition MEV is standard blockchain front-running, such as that seen on Uniswap: a  MEV searcher sees an order, they place their own buy order in front (and possibly a sell order behind, in the case of a sandwich), and they profit from the inflated price introduced by the MEV victim's transaction. This form of MEV is commonly viewed as more harmful to users, and we believe this can be resolved via encryption technologies, such as Trusted Execution Environments or Threshold Encryption.
+
+            On the other hand, plaintext-unconditional MEV is MEV that is extracted, without regard to transaction contents. An example of plaintext-unconditional MEV is top-of-block arbitrage, whereby the latency between blocks leads to price dislocation between on-chain venues and the rest of the market, thus creating an arbitrage opportunity. Block proposers can extract this MEV by placing their own orders before others', or by selling the right to exclusive top-of-block trading to a trading entity. This form of MEV is difficult to detect and punish, since doing so requires either a collaborative block construction process, or a method for the network to veto the ordering of transactions in the block constructed by the block proposer. Generally speaking, the former requires formidably large network bandwidth and low inter-validator latency, while the latter requires nondeterministic slashing conditions (e.g., honest and potentially economically irrational majority assumptions). Although plaintext-unconditional MEV is less pernicious to everyday users than plaintext-conditional MEV, it may degrade the profitability of market makers, who are essential agents in the dYdX V4 exchange marketplace. We look forward to listening and contributing to discussions on mitigating MEV in dYdX's future.
             
-    % \subsection{To Do: Liquid Staking?}
-
-    %     Give a brief overview of what liquid staking is and why dYdX might want to enable some kind of liquid staking?
