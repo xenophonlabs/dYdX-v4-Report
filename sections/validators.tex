@@ -10,7 +10,7 @@
     
 \end{fullwidth}
 
-    On August 2023 the dYdX Foundation posted \bhref{https://dydx.forum/t/a-take-on-good-practices-for-dydx-chain-validators-and-stakers/978}{A Take on Good Practices for dYdX Chain Validators and Stakers}. The post provides a guide for the dYdX community on what behaviors are required, acceptable, and unacceptable for validators and stakers on dYdX Chain. These range from relatively obvious guidance, such as ``dYdX Chain validators should not engage in MEV activities'', to more nuanced recommendations regarding specific key-management systems and bare-metal setups. 
+    On August 2023 the dYdX Foundation posted \bhref{https://dydx.forum/t/a-take-on-good-practices-for-dydx-chain-validators-and-stakers/978}{A Take on Good Practices for dYdX Chain Validators and Stakers}. The post provides a guide for the dYdX community on what behaviors are acceptable or unacceptable for validators and stakers on dYdX Chain. These range from relatively obvious guidance, such as ``dYdX Chain validators should not engage in MEV activities'', to more nuanced recommendations regarding specific key-management systems and bare-metal setups. 
     \sidenotequote{A non-exhaustive list of parameters that governance will be able to adjust includes: 
     \begin{itemize}
         \item Add new markets 
@@ -42,7 +42,7 @@
 
         \subsubsection{Genesis Parameters}
 
-            The chain's initial fee schedule, along with all other of its initial parameters, are defined during the chain's \textit{Genesis} at the Genesis transaction, or \texttt{gentx}. At a high level, \texttt{gentx} defines the chain's initial markets, accounts, token allocations, and protocol-wide parameters. This includes many of the governance-controlled parameters that we will be discussing for the remainder of the report. Following Genesis, governance may then choose to modify these parameters, submit transactions from community-owned accounts, and add or remove perpetual markets. 
+            The chain's initial fee schedule, along with all other of its initial parameters, are defined during the chain's \textit{Genesis}. At a high level, the Genesis block defines the chain's initial markets, accounts, token allocations, and protocol-wide parameters. This includes many of the governance-controlled parameters that we will be discussing for the remainder of the report. Following Genesis, governance may then choose to modify these parameters, submit transactions from community-owned accounts, and add or remove perpetual markets. 
 
             Parameters are controlled by governance through \texttt{ParameterChangeProposals}. Many of these parameters are described in detail in one of dYdX Trading's latest \bhref{https://dydx.exchange/blog/v4-rewards-and-parameters}{announcements}, and include the various parameters pertaining to validator incentives. 
 
@@ -72,7 +72,7 @@
                 \label{fig:fee_comp_takers}
             \end{figure}
 
-            Going into v4, sophisticated community members may wish adjudicate such proposals by discussing them with both makers and takers, as well as the exchange's validators and stakers. They may compare the existing fee tiers with those of other exchanges and determine reasonable modifications, if any. Crucially, changes to such parameters may then be monitored, with these results being used as evidence in later proposals. 
+            Going into v4, sophisticated community members may wish to adjudicate such proposals by discussing them with both makers and takers, as well as the exchange's validators and stakers. They may compare the existing fee tiers with those of other exchanges and determine reasonable modifications, if any. Crucially, changes to such parameters may then be monitored, with these results being used as evidence in later proposals. 
             
             The interested reader may refer to:
             \begin{itemize}
@@ -84,7 +84,7 @@
 
         \subsection{Rebates or Rewards?}
 
-            dYdX v4 will be entirely replacing the LP rewards program, introduced by the dYdX Foundation in dYdX v3, with a market maker rebate program. As noted in a number of governance proposals, market maker rebates are likely a better incentive for top-of-book liquidity, and provide a more sustainable incentive for liquidity provision. That is, they don't require further inflation to the DYDX token.
+            dYdX v4 will be entirely replacing the LP rewards program, introduced by the dYdX Foundation in dYdX v3, with a market maker rebate program\sidenote{The LP Rewards program along with other DYDX incentives were introduced by the dYdX Foundation in 2021 and have since been controlled dYdX governance.}. As noted in a number of governance proposals, market maker rebates are likely a better incentive for top-of-book liquidity, and provide a more sustainable incentive for liquidity provision. That is, they don't require further inflation to the DYDX token.
             
             We invited \bhref{https://dydx.forum/u/0xcchan/summary}{@0xCchan}, a dYdX community member, to offer further insights on the differences between LP rewards and rebates:
 
@@ -114,14 +114,14 @@
 
         \subsection{The Community Tax}
 
-            As previously mentioned, fees are first paid to validators, who take a commission and then distribute remaining proceeds to their respective stakers. The community may choose to enforce an additional tax on fee income, which applies before fees are disbursed to validators. This tax, known as the Community Tax, will be set to 0\% at Genesis.
+            As previously mentioned, fees are paid to validators and stakers. Validators take a predetermined commission of the total fees, and the remainder is distributed to their respective stakers. The community may choose to enforce an additional tax on fee income, which applies before fees are disbursed to validators. This tax, known as the Community Tax, will be set to 0\% at Genesis.
 
             The community may choose to enforce such a tax to fund additional efforts to grow, secure, or maintain dYdX Chain. As it stands, governance already has tens of millions of dollars in capital to deploy for such efforts, with millions more vesting into the community treasury every month. 
 
             However, as mentioned in Section \ref{sec:introduction}, the DYDX vesting schedule is set to terminate on August 2026. At this point, no more DYDX will vest into the community or rewards treasuries. If and when the DYDX sitting in the community treasury runs out, the community will be faced with two options to continue funding operations and rewards programs:
 
             \begin{enumerate}
-                \item Enable up to 2\% in annual inflation of the DYDX token.
+                \item Enable annual inflation of the DYDX token.
                 \item Enable the community tax on fees on dYdX chain.
             \end{enumerate}
 
@@ -178,13 +178,13 @@
                 \label{fig:bonk}
             \end{marginfigure}
 
-            Governance may choose to make these parameters more or less aggressive to further disincentivize infractions. If governance observes that validators are failing to sign enough blocks, it may choose to increase the slashing percentage from 0 to a modest amount, such as 5\%. In doing so, governance increases the incentive for validators to maintain appropriate uptime. These changes, of course, might incur significant financial consequences for both validators and stakers, and must be examined and justified by sophisticated community members.
+            Governance may choose to make these parameters more or less aggressive to further disincentivize infractions. If governance observes that validators are failing to sign enough blocks, it may choose to increase the slashing percentage from 0 to a modest amount, such as 5\%. In doing so, governance increases the incentive for validators to maintain appropriate uptime. These changes, of course, might incur significant financial consequences for both validators and stakers, and must be examined and justified.
 
         \subsubsection{An Aside on Reputation}
 
             Validators fundamentally rely on reputation to scale their operations and profits. Validators generally have low percentages of ``self-stake'', meaning most of the staked tokens they operate with are delegated to them by the chain's stakers. Although there are several factors that affect which validator a staker chooses to stake their tokens with, a primary one is the validator's reputation. A reputable validator that is active in governance and has a history of excellent performance is likely to receive a greater share of staked tokens. 
 
-            Conversely, a validator caught engaging in detrimental behavior to the chain, such as censoring, reordering, or front-running transactions is unlikely to receive much in staked tokens. That is, if the broader community is made aware of their infractions. It follows that a major tool dYdX governance has against a misbehaving validator is publicity: publicly announcing a validator's misbehavior may cause them significant financial damage. 
+            Conversely, a validator caught engaging in detrimental behavior to the chain, such as censoring, reordering, or front-running transactions is unlikely to receive much in staked tokens. That is, if the broader community is made aware of their infractions. It follows that a major tool dYdX governance has against a misbehaving validator is publicly announcing a validator's misbehavior.
 
         \subsubsection{MEV \& Social Slashing}
 
@@ -211,9 +211,9 @@
 
             Leveraging this dashboard and detection algorithm, community members may monitor validators and punish those found engaging in MEV. However, discrepancies seen on the dashboard don't necessarily mean a validator purposefuly censored, re-ordered, or front-ran transactions.
 
-            Consider the case where two buy orders or similar sizes on the same market are submitted roughly at the same time. This is not a rare occurrence: updates to the orderbook may create arbitrage opportunities that two or more traders notice and try to take advantage of. Validators receiving these orders will match them on a first-come-first-serve basis against existing orders. However, it is possible that two honest validators will receive each order at different times. Suppose order $A$ is submitted from Brazil, and order $B$ is submitted from Japan. A validator in South America might receive order $A$ first, whereas a validator in Asia might receive order $B$ first. This is a simple example of a concept known as \textit{network jitter}: the natural discrepancy between when an order is transmitted and when it is received.
+            Consider the case where two buy orders of similar sizes on the same market are submitted roughly at the same time. This is not a rare occurrence: updates to the orderbook may create arbitrage opportunities that two or more traders notice and try to take advantage of. Validators receiving these orders will match them on a first-come-first-serve basis against existing orders. However, it is possible that two honest validators will receive each order at different times. Suppose order $A$ is submitted from Brazil, and order $B$ is submitted from Japan. A validator in South America might receive order $A$ first, whereas a validator in Asia might receive order $B$ first. This is a simple example of a concept known as \textit{network jitter}: the natural discrepancy between when an order is transmitted and when it is received\sidenote{dYdX Trading and Skip have \bhref{https://dydx.exchange/blog/distinguishing-mev-from-expected-noise}{released} an updated version of the MEV Dashboard that tries to mitigate the effects of network jitter. The updated dashboard first compares the discrepancies between honest nodes to determine a ``baseline'' discrepancy, which is used to benchmark the discrepancy between the honest nodes and the block proposer.}.
 
-            Due to network jitter, honest validators may exhibit non-zero MEV measurements! Therefore, an important task for those punishing dishonest validators is to adjudicate, within reason, when observed discrepancies can be written off as network jitter, and when they are likely the consequence of malicious behavior.
+            Due to network jitter, honest validators may exhibit non-zero MEV measurements! Therefore, an important task for those punishing dishonest validators is to adjudicate, within reason, whether observed discrepancies can be written off as network jitter.
 
             If community members, such as the potential Slashing Review Committee, determine that a particular validator has engaged in MEV, they may propose to slash this validator. This is known as Social Slashing, and is a severe punishment for the validator. The community may choose to slash part or all of the validator's stake, affecting not only the validator but also the staker. For this reason, stakers must be careful to stake their DYDX with validators that they trust, or risk being slashed.
 
@@ -231,5 +231,4 @@
 
             There are primarily two forms of MEV that may be present in dYdX V4, which we term ``plaintext-conditional''  and ``plaintext-unconditional'' MEV. An example of plaintext-condition MEV is standard blockchain front-running, such as that seen on Uniswap: a  MEV searcher sees an order, they place their own buy order in front (and possibly a sell order behind, in the case of a sandwich), and they profit from the inflated price introduced by the MEV victim's transaction. This form of MEV is commonly viewed as more harmful to users, and we believe this can be resolved via encryption technologies, such as Trusted Execution Environments or Threshold Encryption.
 
-            On the other hand, plaintext-unconditional MEV is MEV that is extracted, without regard to transaction contents. An example of plaintext-unconditional MEV is top-of-block arbitrage, whereby the latency between blocks leads to price dislocation between on-chain venues and the rest of the market, thus creating an arbitrage opportunity. Block proposers can extract this MEV by placing their own orders before others', or by selling the right to exclusive top-of-block trading to a trading entity. This form of MEV is difficult to detect and punish, since doing so requires either a collaborative block construction process, or a method for the network to veto the ordering of transactions in the block constructed by the block proposer. Generally speaking, the former requires formidably large network bandwidth and low inter-validator latency, while the latter requires nondeterministic slashing conditions (e.g., honest and potentially economically irrational majority assumptions). Although plaintext-unconditional MEV is less pernicious to everyday users than plaintext-conditional MEV, it may degrade the profitability of market makers, who are essential agents in the dYdX V4 exchange marketplace. We look forward to listening and contributing to discussions on mitigating MEV in dYdX's future.
-            
+            On the other hand, plaintext-unconditional MEV is MEV that is extracted, without regard to transaction contents. An example of plaintext-unconditional MEV is top-of-block arbitrage, whereby the latency between blocks leads to price dislocation between on-chain venues and the rest of the market, thus creating an arbitrage opportunity. Block proposers can extract this MEV by placing their own orders before others', or by selling the right to exclusive top-of-block trading to a trading entity. This form of MEV is difficult to detect and punish, since doing so requires either a collaborative block construction process, or a method for the network to veto the ordering of transactions in the block constructed by the block proposer. Generally speaking, the former requires formidably large network bandwidth and low inter-validator latency, while the latter requires nondeterministic slashing conditions (e.g., honest and potentially economically irrational majority assumptions)\sidenote[][-1cm]{Although plaintext-unconditional MEV is less pernicious to everyday users than plaintext-conditional MEV, it may degrade the profitability of market makers, who are essential agents in the dYdX V4 exchange marketplace.}. We look forward to listening and contributing to discussions on mitigating MEV in dYdX's future.

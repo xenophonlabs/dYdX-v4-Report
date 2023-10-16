@@ -11,7 +11,7 @@
 
     Governance on Cosmos chains has a number of differences and similarities with governance on Ethereum-based protocols. One of the main differences is that votes on Cosmos chains are often cast by the chain's validators. This has been a point of contention for many Cosmos chains, with some arguing that validators should largely abstain from governance and focus on doing what they do best: validating the chain. Governance should instead be conducted by community members with deep domain specific knowledge of the chain, its ecosystem, and priorities. Delegating votes to these community members has become a popular practice amongst many Ethereum-based protocols including dYdX. 
 
-    However, enabling delegation to non-validators poses a technical challenge on Cosmos, which we will discuss. For a great introduction to Cosmos and Cosmos governance purpose-written for dYdX, refer to \bhref{https://dydx.forum/t/dydx-v4-a-beginners-guide-to-cosmos/761}{this} post by RoboMcGobo, a dYdX and Osmosis community member and grantor for the dYdX Grants program. For a more detailed overview of the dYdX Chain governance process, see this comprehensive \href{https://drive.google.com/file/d/1smL9EMRItWbloTJ9u0sxiynKDVvsBH6e/view}{report} from Flipside Crypto's governance team!
+    However, enabling delegation to non-validators poses a technical challenge on Cosmos, which we will discuss. For a great introduction to Cosmos and Cosmos governance purpose-written for dYdX, refer to \bhref{https://dydx.forum/t/dydx-v4-a-beginners-guide-to-cosmos/761}{this} post by RoboMcGobo, a dYdX and Osmosis community member and grantor for the dYdX Grants program. For a more detailed overview of the dYdX Chain governance process, see this comprehensive \bhref{https://drive.google.com/file/d/1smL9EMRItWbloTJ9u0sxiynKDVvsBH6e/view}{report} from Flipside Crypto's governance team!
 
     \subsection{The Governance Process}
 
@@ -26,11 +26,11 @@
 
         On dYdX Chain any user can submit a proposal along with an initial deposit. The minimum initial deposit required to submit a proposal is defined by the \texttt{min\_initial\_deposit\_ratio} parameter, which can be set to $0$. By raising the minimum initial deposit, governance could throttle the quantity of submissions. This might be appropriate, for example, if the governance process is being overwhelmed by numerous frivolous proposals.
 
-        Following the initial proposal, other token holders might contribute to a proposals initial deposit until a \texttt{min\_deposit} is reached, currently set at $1M$ DYDX as of the latest testnet, which is subject to change. Again, governance may choose to raise or lower this minimum deposit depending on how difficult it is to reach it.
+        Following the initial proposal, other token holders might contribute to a proposals initial deposit until a \texttt{min\_deposit} is reached, currently set at $10k$ DYDX as of the latest testnet, which is subject to change. Again, governance may choose to raise or lower this minimum deposit depending on how difficult it is to reach it.
 
         Once a proposal has reached the minimum deposit, it enters a voting period lasting 7 days. Validators and stakers may vote on a proposal with their staked DYDX. A staker will inherit the vote of their validator unless they choose to manually override it. As it stands, stakers cannot choose to delegate their voting power to any user other than a validator.
 
-        Once the voting period ends, the module will check whether at least $33.4\%$ of staked tokens have voted, known as quorum. If quorum was met, a proposal is implemented as long as more than $50\%$ of votes were in favor of the proposal, and less than $33.4\%$ of votes vetoed the proposal. All these thresholds are parameters than governance may modify through parameter change proposals as well.
+        Once the voting period ends, the module will check whether at least $33.4\%$ of staked tokens have voted, known as quorum. If quorum was met, a proposal is implemented as long as more than $50\%$ of votes were in favor of the proposal, and less than $33.4\%$ of votes vetoed the proposal. All these thresholds are parameters that governance may modify through parameter change proposals as well.
 
         The governance process for the Cosmos Hub is depicted in Fig. \ref{fig:cosmos_gov}, taken from a blog post by Felix Lutsch as Chorus One. Although some governance parameters for the Cosmos Hub are different than those for dYdX Chain, the process is still the same.
 
