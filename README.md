@@ -4,4 +4,4 @@ This is the github repository for _dYdX v4: with Great Decentralization Comes Gr
 
 ## Contributing to the Project
 
-If you would like to contribute to the report, please open a pull-request with your changes. In the PR's comment, briefly introduce yourself, your change, and why you think it is relevant. We highly recommend you first engage with the community on the relevant discussions on the dYdX forum here (todo: link). 
+If you would like to contribute to the report, please open a pull-request with your changes. In the PR's comment, briefly introduce yourself, your change, and why you think it is relevant. We highly recommend you first engage with the community on the relevant discussions on the dYdX forum [here](https://dydx.forum/t/dydx-v4-with-great-decentralization-comes-great-responsibility/1344)
